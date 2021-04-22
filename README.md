@@ -45,5 +45,20 @@ cd /etc/falco
 vi falco_rules.yaml
 ```
 
+## Install with Helm
+
+```
+helm repo add falcosecurity https://falcosecurity.github.io/charts
+helm repo update
+
+helm install falco falcosecurity/falco
+```
+
+
+
+
 Link:
 https://github.com/falcosecurity/profiles
+
+
+
