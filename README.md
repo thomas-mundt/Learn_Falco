@@ -1,5 +1,11 @@
 # Learn Falco
 
+## Links
+
+- https://github.com/falcosecurity/profiles
+- https://falco.org/
+- https://falco.org/docs/rules/supported-fields/
+
 
 ## Install Falco
 
@@ -91,8 +97,7 @@ helm install falco falcosecurity/falco
 
 
 
-Link:
-https://github.com/falcosecurity/profiles
+
 
 
 
