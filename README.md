@@ -110,7 +110,7 @@ Extended rule with sysdig fields (user.name, container.name, container.image) fo
   
 - rule: The program "cat" is run in a container
   desc: An event will trigger every time you run cat in a container
-  condition: custom_macro and proc.name in **(blacklist_binaries)**
+  condition: custom_macro and proc.name in (blacklist_binaries)
   output: "cat was run inside a container (user=%user.name container=%container.name image=%container.image proc=%proc.cmdline)"
   priority: INFO
 ```
