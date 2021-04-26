@@ -85,6 +85,39 @@ Extended rule with sysdig fields (user.name, container.name, container.image) fo
 
 
 
+## Use Macros
+
+```
+- macro: custom_macro
+  condition: env.type = execve and container.id != host
+  
+- rule: The program "cat" is run in a container
+  desc: An event will trigger every time you run cat in a container
+  condition: custom_macro and proc.name = cat
+  output: "cat was run inside a container (user=%user.name container=%container.name image=%container.image proc=%proc.cmdline)"
+  priority: INFO
+```
+
+
+## Use Lists
+
+```
+- macro: custom_macro
+  condition: env.type = execve and container.id != host
+  
+- lists: blacklist_binaries
+  items: [cat, grep, date]
+  
+- rule: The program "cat" is run in a container
+  desc: An event will trigger every time you run cat in a container
+  condition: custom_macro and proc.name in (blacklist_binaries)
+  output: "cat was run inside a container (user=%user.name container=%container.name image=%container.image proc=%proc.cmdline)"
+  priority: INFO
+```
+
+
+
+
 ## Install with Helm
 
 ```
