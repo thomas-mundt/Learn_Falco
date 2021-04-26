@@ -45,6 +45,40 @@ cd /etc/falco
 vi falco_rules.yaml
 ```
 
+
+## Basic rule
+
+
+falco_rules.local.yaml
+```
+- rule: The program "cat" is run in a container
+  desc: An event will trigger every time you run cat in a container
+  condition: env.type = execve and container.id != host and proc.name = cat
+  output: "cat was run inside a container"
+  priority: INFO
+```
+
+Test with an pod and execute cat inside the container
+```
+falco
+
+#or
+systemctl start falco
+```
+
+
+
+Extended rule with sysdig fields (user.name, container.name, container.image) found in falco doku or sysdig -l
+```
+- rule: The program "cat" is run in a container
+  desc: An event will trigger every time you run cat in a container
+  condition: env.type = execve and container.id != host and proc.name = cat
+  output: "cat was run inside a container (user=%user.name container=%container.name image=%container.image proc=%proc.cmdline)"
+  priority: INFO
+```
+
+
+
 ## Install with Helm
 
 ```
