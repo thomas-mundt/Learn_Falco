@@ -135,6 +135,8 @@ helm install falco falcosecurity/falco
 tail -f /var/log/syslog | grep falco
 ```
 
+## Overwrite Rule
 
+You can overwrite rules in the file: /etc/falco/falco_rules.local.yaml
 
 
