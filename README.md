@@ -129,7 +129,11 @@ helm install falco falcosecurity/falco
 
 
 
+## Get Output when installed as a service
 
+```
+tail -f /var/log/syslog | grep falco
+```
 
 
 
